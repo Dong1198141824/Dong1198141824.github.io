@@ -3,9 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>github pages</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" />
   </head>
   <body>
-    <div>hello github pages</div>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">github pages</h1>
+        <p class="subtitle"></p>
+        <div class="tabs">
+          <ul id="tabs-label" class="is-flex is-justify-content-center">
+            <li class="is-active"><a>小肥啾</a></li>
+            <li><a>大肥啾</a></li>
+          </ul>
+        </div>
+        <div>
+          <ul id="tabs-content">
+            <li style="display: block; width: 100%">
+              <img src="./static/image/Xiao-Fei-Jiu.jpg" style="width: 100%" alt="" />
+            </li>
+            <li style="display: none">
+              <img src="./static/image/Da-Fei-Jiu.webp" style="width: 100%" alt="" />
+            </li>
+          </ul>
+        </div>
+
+        <script>
+          window.onload = function () {};
+          const tabsLabelEl = document.getElementById("tabs-label");
+          [].slice.call([...tabsLabelEl.children]).forEach((element) => {
+            element.onclick = handleTabsClick;
+          });
+          const tabsContentEl = document.getElementById("tabs-content");
+
+          function handleTabsClick() {
+            let _index = -1;
+            [].slice.call([...tabsLabelEl.children]).forEach((element, index) => {
+              if (element === this) {
+                this.setAttribute("class", "is-active");
+                _index = index;
+              } else {
+                element.removeAttribute("class", "is-active");
+              }
+            });
+            [].slice.call([...tabsContentEl.children]).forEach((element, index) => {
+              if (_index == index) {
+                element.style.display = "";
+              } else {
+                element.style.display = "none";
+              }
+            });
+          }
+        </script>
+      </div>
+    </section>
   </body>
 </html>
